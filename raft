@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    int n,k;
+    int sheep[n];
+    float sum = 0;
+    float raft = 0;
+    int biggestSheep = 0;
+
+    while(1){
+    scanf("%d %d", &n, &k);
+    if(n <= 1000 && n >= 1 && k >= 1 && k <= 1000){
+        break;
+        }
+    printf("You have entered invalid values\n");
+    }
+
+
+    for(int i = 0; i < n; ){
+        scanf("%d", &sheep[i]);
+        if(sheep[i] >= 1 && sheep[i] <= 100000){
+            i++;
+        }else{
+        printf("You have entered wrong number\n");
+        }
+    }
+
+    int A[20] = {52, 17946, 27160, 387, 17346, 27505, 20816, 20577, 10961, 6021, 5262, 28278, 24163, 931, 11003, 19738, 17914, 1683, 10320, 10475};
+    
+    for(int i = 0; i < n; i++){
+        if(biggestSheep < A[i]){
+            biggestSheep = A[i];
+        }
+    }
+
+    for(int i = 0; i < n; i++){
+        sum += A[i];
+    }
+    printf("%.2f", sum);
+    raft = sum / k;
+
+    raft = ceil(raft);
+
+    if((int)raft % 2 == 1){
+        raft++;
+    }
+
+    printf("%d ", biggestSheep);
+    if((int)raft < biggestSheep){
+        raft = biggestSheep;
+        }
+    printf("%.2f", raft);
+
+    return 0;
+}

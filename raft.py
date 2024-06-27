@@ -1,7 +1,3 @@
-a = [52, 17946,27160, 387, 17346, 27505, 20816, 20577, 10961, 6021, 5262, 28278, 24163, 931, 11003, 19738, 17914, 1683, 10320, 10475]
-b = [26,10,30,7,4,5] #82
-c = [13,9,1,34,23,12,5] # 97
-d = [4, 5, 7, 11, 2, 9, 18, 7] #63 (v minalata programa nqmashe 4 a beshe 2)
 
 n = input("Enter how many sheeps you have: ")
 k = input("Enter how many time you need to cross the river: ")

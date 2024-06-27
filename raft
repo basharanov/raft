@@ -1,58 +1,53 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+a = [52, 17946,27160, 387, 17346, 27505, 20816, 20577, 10961, 6021, 5262, 28278, 24163, 931, 11003, 19738, 17914, 1683, 10320, 10475]
+b = [26,10,30,7,4,5] #82
+c = [13,9,1,34,23,12,5] # 97
+d = [4, 5, 7, 11, 2, 9, 18, 7] #63 (v minalata programa nqmashe 4 a beshe 2)
 
-int main()
-{
-    int n,k;
-    int sheep[n];
-    float sum = 0;
-    float raft = 0;
-    int biggestSheep = 0;
+n = input("Enter how many sheeps you have: ")
+k = input("Enter how many time you need to cross the river: ")
+k = int(k)
+list= []
+for i in range(int(n)):
+    number = input("Enter the sheep weight: ")
+    list.append(int(number))
 
-    while(1){
-    scanf("%d %d", &n, &k);
-    if(n <= 1000 && n >= 1 && k >= 1 && k <= 1000){
-        break;
-        }
-    printf("You have entered invalid values\n");
-    }
+array = []
+array = list.copy()
+
+result = 0
+margin = 100000
+index = 0
+goal = 0
+allSum = 0
+results = []
+
+for i in range(len(array)):
+    allSum += array[i]
 
 
-    for(int i = 0; i < n; ){
-        scanf("%d", &sheep[i]);
-        if(sheep[i] >= 1 && sheep[i] <= 100000){
-            i++;
-        }else{
-        printf("You have entered wrong number\n");
-        }
-    }
+while k > 0:
+    allSum -= result
+    result = 0
+    margin = 100000
+    goal = allSum / k
+    for j in range(len(array)):
+        for i in range(len(array)):
+            if abs(goal - (result + array[i])) < margin:
+                margin = abs(goal - (result + array[i]))
+                index = i
+        if goal - result != margin:
+            result += array[index]
+            array[index] = 0
+            index = 0
 
-    //int A[20] = {52, 17946, 27160, 387, 17346, 27505, 20816, 20577, 10961, 6021, 5262, 28278, 24163, 931, 11003, 19738, 17914, 1683, 10320, 10475};
-    
-    for(int i = 0; i < n; i++){
-        if(biggestSheep < sheep[i]){
-            biggestSheep = sheep[i];
-        }
-    }
+    results.append(result)
+    k-=1
 
-    for(int i = 0; i < n; i++){
-        sum += sheep[i];
-    }
-    printf("%.2f", sum);
-    raft = sum / k;
+k = 0
+for i in range(len(results)):
+    if results[i] > k:
+        k = results[i]
 
-    raft = ceil(raft);
+print(k)
 
-    if((int)raft % 2 == 1){
-        raft++;
-    }
 
-    printf("%d ", biggestSheep);
-    if((int)raft < biggestSheep){
-        raft = biggestSheep;
-        }
-    printf("%.2f", raft);
-
-    return 0;
-}
